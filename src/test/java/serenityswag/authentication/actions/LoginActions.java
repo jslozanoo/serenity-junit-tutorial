@@ -11,17 +11,24 @@ public class  LoginActions extends UIInteractionSteps {
     public void as(User user){
         openUrl("https://www.saucedemo.com/");
 
-        find(By.id("user-name")).sendKeys(user.getUsername());
-        find(By.id("password")).sendKeys(user.getPassword());
-        find(By.id("login-button")).click();
+        // Login as a standard user
 
-        // Login as a standard user}
-        /*
         $("[data-test='username']").sendKeys(user.getUsername());
         $("[data-test='password']").sendKeys(user.getPassword());
         $("[data-test='login-button']").click();
-
-         */
+    }
+    private void findById(User user){
+        $("#user-name").sendKeys(user.getUsername());
+        // find(By.id("user-name")).sendKeys(user.getUsername());
+        $("#password").sendKeys(user.getPassword());
+        // find(By.id("password")).sendKeys(user.getPassword());
+        $("#login-button").click();
+        // find(By.id("login-button")).click();
     }
 
+    private void findByName(User user){
+        find(By.name("user-name")).sendKeys(user.getUsername());
+        find(By.name("password")).sendKeys(user.getPassword());
+        find(By.name("login-button")).click();
+    }
 }
